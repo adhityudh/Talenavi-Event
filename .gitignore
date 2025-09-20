@@ -1,3 +1,4 @@
+# ===== Bedrock default (dipertahankan) =====
 # Application
 web/app/plugins/*
 !web/app/plugins/.gitkeep
@@ -26,3 +27,25 @@ auth.json
 
 # WP-CLI
 wp-cli.local.yml
+
+# ===== Tambahan yang berguna =====
+# Sistem/IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Front-end build
+**/node_modules/
+**/dist/
+**/build/
+**/*.map
+coverage/
+
+# Dump DB
+*.sql
+*.sqlite
+
+# LocalWP symlink (abaikan jika tidak ada)
+public
