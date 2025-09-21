@@ -878,6 +878,19 @@
         }
 
         /* Event Card */
+        .event-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .event-card-link:hover,
+        .event-card-link:visited,
+        .event-card-link:focus {
+            text-decoration: none;
+            color: inherit;
+        }
+
         .event-card {
             background-color: hsl(var(--card));
             border-radius: var(--radius);
@@ -940,11 +953,7 @@
             font-weight: 600;
             line-height: 1.4;
             margin-bottom: var(--space-3);
-            transition: color 0.2s;
-        }
-
-        .event-card:hover .event-title {
-            color: hsl(var(--primary));
+            color: hsl(var(--foreground));
         }
 
         .event-details {

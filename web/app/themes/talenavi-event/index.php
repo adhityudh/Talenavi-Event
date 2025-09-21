@@ -177,64 +177,66 @@
                         $event_location = $formatted_event['location'];
                 ?>
                 
-                <div class="event-card" 
-                     data-category="<?php echo esc_attr($category_name); ?>" 
-                     data-title="<?php echo esc_attr($event->post_title); ?>" 
-                     data-venue="<?php echo esc_attr($event_location); ?>" 
-                     data-location="<?php echo esc_attr($event_location); ?>">
-                    
-                    <div class="event-image-wrapper">
-                        <img src="<?php echo esc_url($banner_url); ?>" alt="<?php echo esc_attr($event->post_title); ?>" class="event-image">
-                        <?php if ($category_name): ?>
-                        <div class="event-badge badge-category"><?php echo esc_html($category_name); ?></div>
-                        <?php endif; ?>
-                    </div>
-                    
-                    <div class="event-content">
-                        <h3 class="event-title"><?php echo esc_html($event->post_title); ?></h3>
+                <a href="<?php echo esc_url(get_permalink($event->ID)); ?>" class="event-card-link">
+                    <div class="event-card" 
+                         data-category="<?php echo esc_attr($category_name); ?>" 
+                         data-title="<?php echo esc_attr($event->post_title); ?>" 
+                         data-venue="<?php echo esc_attr($event_location); ?>" 
+                         data-location="<?php echo esc_attr($event_location); ?>">
                         
-                        <div class="event-details">
-                            <div class="event-detail">
-                                <svg class="event-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                    <line x1="16" y1="2" x2="16" y2="6"></line>
-                                    <line x1="8" y1="2" x2="8" y2="6"></line>
-                                    <line x1="3" y1="10" x2="21" y2="10"></line>
-                                </svg>
-                                <span><?php echo esc_html($formatted_date); ?></span>
-                                <?php if ($formatted_time): ?>
-                                <svg class="event-detail-icon icon-spacing" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <polyline points="12,6 12,12 16,14"></polyline>
-                                </svg>
-                                <span><?php echo esc_html($formatted_time); ?></span>
+                        <div class="event-image-wrapper">
+                            <img src="<?php echo esc_url($banner_url); ?>" alt="<?php echo esc_attr($event->post_title); ?>" class="event-image">
+                            <?php if ($category_name): ?>
+                            <div class="event-badge badge-category"><?php echo esc_html($category_name); ?></div>
+                            <?php endif; ?>
+                        </div>
+                        
+                        <div class="event-content">
+                            <h3 class="event-title"><?php echo esc_html($event->post_title); ?></h3>
+                            
+                            <div class="event-details">
+                                <div class="event-detail">
+                                    <svg class="event-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg>
+                                    <span><?php echo esc_html($formatted_date); ?></span>
+                                    <?php if ($formatted_time): ?>
+                                    <svg class="event-detail-icon icon-spacing" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12,6 12,12 16,14"></polyline>
+                                    </svg>
+                                    <span><?php echo esc_html($formatted_time); ?></span>
+                                    <?php endif; ?>
+                                </div>
+                                
+                                <?php if ($event_location): ?>
+                                <div class="event-detail">
+                                    <svg class="event-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                    <span><?php echo esc_html($event_location); ?></span>
+                                </div>
                                 <?php endif; ?>
                             </div>
                             
-                            <?php if ($event_location): ?>
-                            <div class="event-detail">
-                                <svg class="event-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                    <circle cx="12" cy="10" r="3"></circle>
-                                </svg>
-                                <span><?php echo esc_html($event_location); ?></span>
+                            <div class="event-footer">
+                                <?php if ($formatted_price): ?>
+                                <div class="event-price">
+                                    <span class="price-current"><?php echo esc_html($formatted_price); ?></span>
+                                </div>
+                                <?php endif; ?>
+                                
+                                <button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); openWhatsApp('<?php echo esc_js($event->post_title); ?>', '<?php echo esc_js($formatted_date); ?>', '<?php echo esc_js($event_location); ?>');">
+                                    Get Tickets
+                                </button>
                             </div>
-                            <?php endif; ?>
-                        </div>
-                        
-                        <div class="event-footer">
-                            <?php if ($formatted_price): ?>
-                            <div class="event-price">
-                                <span class="price-current"><?php echo esc_html($formatted_price); ?></span>
-                            </div>
-                            <?php endif; ?>
-                            
-                            <button class="btn btn-primary btn-sm" onclick="event.stopPropagation();">
-                                Get Tickets
-                            </button>
                         </div>
                     </div>
-                </div>
+                </a>
                 
                 <?php
                     }

@@ -315,6 +315,16 @@
                 }
             });
         });
+
+        // WhatsApp redirect function
+        function openWhatsApp(eventTitle, eventDate, eventLocation) {
+            const phoneNumber = '+628882501242';
+            const message = `Halo! Saya tertarik untuk membeli tiket event "${eventTitle}" yang akan diadakan pada ${eventDate}${eventLocation ? ` di ${eventLocation}` : ''}. Bisakah Anda memberikan informasi lebih lanjut mengenai harga dan cara pembelian tiket?`;
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+            
+            window.open(whatsappUrl, '_blank');
+        }
     </script>
     
     <?php wp_footer(); ?>

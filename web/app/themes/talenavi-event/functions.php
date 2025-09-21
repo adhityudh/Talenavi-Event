@@ -227,9 +227,19 @@ function handle_event_search() {
         'post_status' => 'publish'
     );
     
-    // Add search term if provided (searches in title and content)
+    // Add search term if provided (searches in title only)
     if (!empty($search_term)) {
-        $args['s'] = $search_term;
+        // Use a custom filter to search only in post title
+        add_filter('posts_where', function($where, $wp_query) use ($search_term) {
+            global $wpdb;
+            if (!empty($search_term)) {
+                $where .= " AND {$wpdb->posts}.post_title LIKE '%" . esc_sql($wpdb->esc_like($search_term)) . "%'";
+            }
+            return $where;
+        }, 10, 2);
+        
+        // Set a flag to remove the filter after this query
+        $args['title_search_only'] = true;
     }
     
     // Build meta_query array
@@ -274,6 +284,12 @@ function handle_event_search() {
     }
     
     $events = get_posts($args);
+    
+    // Remove the title search filter after query execution
+    if (!empty($search_term) && isset($args['title_search_only'])) {
+        remove_all_filters('posts_where');
+    }
+    
     $event_data = array();
     
     // Debug logging
