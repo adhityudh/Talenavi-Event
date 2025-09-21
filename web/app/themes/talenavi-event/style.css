@@ -1,0 +1,38 @@
+/*
+Theme Name: Talenavi Event
+Description: A modern and responsive WordPress theme for event management and ticketing.
+Author: Talenavi Team
+Version: 1.0.0
+Text Domain: talenavi-event
+Domain Path: /languages
+Requires at least: 5.0
+Tested up to: 6.4
+Requires PHP: 7.4
+License: GPL v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Tags: events, tickets, responsive, modern, clean
+*/
+
+/* 
+ * Main stylesheet for Talenavi Event theme
+ * All styles are included inline in header.php for better performance
+ * This file serves as the theme identifier for WordPress
+ */
+
+/* Basic reset and theme foundation */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Theme identification - required by WordPress */
+.talenavi-event-theme {
+    display: none;
+}
