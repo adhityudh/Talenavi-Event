@@ -1,61 +1,394 @@
-<p align="center">
-  <a href="https://roots.io/bedrock/">
-    <img alt="Bedrock" src="https://cdn.roots.io/app/uploads/logo-bedrock.svg" height="100">
-  </a>
-</p>
-
-<p align="center">
-  <a href="https://packagist.org/packages/roots/bedrock">
-    <img alt="Packagist Installs" src="https://img.shields.io/packagist/dt/roots/bedrock?label=projects%20created&colorB=2b3072&colorA=525ddc&style=flat-square">
-  </a>
-
-  <a href="https://packagist.org/packages/roots/wordpress">
-    <img alt="roots/wordpress Packagist Downloads" src="https://img.shields.io/packagist/dt/roots/wordpress?label=roots%2Fwordpress%20downloads&logo=roots&logoColor=white&colorB=2b3072&colorA=525ddc&style=flat-square">
-  </a>
-
-  <img src="https://img.shields.io/badge/dynamic/json.svg?url=https://raw.githubusercontent.com/roots/bedrock/master/composer.json&label=wordpress&logo=roots&logoColor=white&query=$.require[%22roots/wordpress%22]&colorB=2b3072&colorA=525ddc&style=flat-square">
-
-  <a href="https://github.com/roots/bedrock/actions/workflows/ci.yml">
-    <img alt="Build Status" src="https://img.shields.io/github/actions/workflow/status/roots/bedrock/ci.yml?branch=master&logo=github&label=CI&style=flat-square">
-  </a>
-
-  <a href="https://twitter.com/rootswp">
-    <img alt="Follow Roots" src="https://img.shields.io/badge/follow%20@rootswp-1da1f2?logo=twitter&logoColor=ffffff&message=&style=flat-square">
-  </a>
-</p>
-
-<p align="center">WordPress boilerplate with Composer, easier configuration, and an improved folder structure</p>
-
-<p align="center">
-  <a href="https://roots.io/bedrock/">Website</a> &nbsp;&nbsp; <a href="https://roots.io/bedrock/docs/installation/">Documentation</a> &nbsp;&nbsp; <a href="https://github.com/roots/bedrock/releases">Releases</a> &nbsp;&nbsp; <a href="https://discourse.roots.io/">Community</a>
-</p>
-
-## Sponsors
-
-Bedrock is an open source project and completely free to use. If you've benefited from our projects and would like to support our future endeavors, please consider [sponsoring Roots](https://github.com/sponsors/roots).
+# 🎪 Talenavi Event - WordPress Application
 
 <div align="center">
-<a href="https://carrot.com/"><img src="https://cdn.roots.io/app/uploads/carrot.svg" alt="Carrot" width="120" height="90"></a> <a href="https://wordpress.com/"><img src="https://cdn.roots.io/app/uploads/wordpress.svg" alt="WordPress.com" width="120" height="90"></a> <a href="https://worksitesafety.ca/careers/"><img src="https://cdn.roots.io/app/uploads/worksite-safety.svg" alt="Worksite Safety" width="120" height="90"></a> <a href="https://www.itineris.co.uk/"><img src="https://cdn.roots.io/app/uploads/itineris.svg" alt="Itineris" width="120" height="90"></a> <a href="https://bonsai.so/"><img src="https://cdn.roots.io/app/uploads/bonsai.svg" alt="Bonsai" width="120" height="90"></a>
+
+![WordPress](https://img.shields.io/badge/WordPress-6.8.2-blue.svg)
+![PHP](https://img.shields.io/badge/PHP-8.1+-purple.svg)
+![Bedrock](https://img.shields.io/badge/Bedrock-Latest-green.svg)
+![Composer](https://img.shields.io/badge/Composer-2.x-orange.svg)
+
+**WordPress Application Built with Roots Bedrock Framework**
+
 </div>
 
-## Overview
+---
 
-Bedrock is a WordPress boilerplate for developers that want to manage their projects with Git and Composer. Much of the philosophy behind Bedrock is inspired by the [Twelve-Factor App](http://12factor.net/) methodology, including the [WordPress specific version](https://roots.io/twelve-factor-wordpress/).
+## 📁 Direktori Overview
 
-- Better folder structure
-- Dependency management with [Composer](https://getcomposer.org)
-- Easy WordPress configuration with environment specific files
-- Environment variables with [Dotenv](https://github.com/vlucas/phpdotenv)
-- Autoloader for mu-plugins (use regular plugins as mu-plugins)
+Ini adalah direktori aplikasi WordPress utama yang dibangun menggunakan Roots Bedrock framework. Direktori ini berisi semua file aplikasi WordPress, konfigurasi, dan dependensi yang dikelola dengan Composer.
 
-## Getting Started
+### 🏗 Struktur Direktori
 
-See the [Bedrock installation documentation](https://roots.io/bedrock/docs/installation/).
+```
+app/
+├── .env.example              # Template environment variables
+├── .gitignore               # Git ignore rules
+├── composer.json            # PHP dependencies & project config
+├── composer.lock            # Locked dependency versions
+├── pint.json               # Laravel Pint configuration
+├── wp-cli.yml              # WP-CLI configuration
+├── config/                 # Application configurations
+│   ├── application.php     # Main application config
+│   └── environments/       # Environment-specific configs
+│       ├── development.php # Development environment
+│       └── staging.php     # Staging environment
+├── sql/                    # Database files (if any)
+└── web/                    # Web root directory
+    ├── app/                # WordPress application files
+    │   ├── mu-plugins/     # Must-use plugins
+    │   ├── plugins/        # Regular plugins
+    │   ├── themes/         # WordPress themes
+    │   │   └── talenavi-event/  # Custom theme
+    │   └── uploads/        # Media uploads
+    ├── index.php           # WordPress entry point
+    └── wp-config.php       # WordPress configuration
+```
 
-## Stay Connected
+---
 
-- Join us on Discord by [sponsoring us on GitHub](https://github.com/sponsors/roots)
-- Participate on [Roots Discourse](https://discourse.roots.io/)
-- Follow [@rootswp on Twitter](https://twitter.com/rootswp)
-- Read the [Roots Blog](https://roots.io/blog/)
-- Subscribe to the [Roots Newsletter](https://roots.io/newsletter/)
+## 🚀 Quick Start
+
+### Prerequisites
+
+- **PHP**: 8.1 atau lebih tinggi
+- **Composer**: 2.x
+- **MySQL/MariaDB**: 5.7+ / 10.2+
+- **Web Server**: Apache/Nginx
+
+### 1. Install Dependencies
+
+```bash
+# Masuk ke direktori app
+cd app/
+
+# Install PHP dependencies
+composer install
+```
+
+### 2. Environment Setup
+
+```bash
+# Copy environment template
+cp .env.example .env
+
+# Edit file .env dengan konfigurasi database Anda
+nano .env
+```
+
+### 3. Environment Configuration
+
+Edit file `.env` dengan konfigurasi berikut:
+
+```env
+# Database Configuration
+DB_NAME='talenavi_event'
+DB_USER='your_db_user'
+DB_PASSWORD='your_db_password'
+DB_HOST='localhost'
+
+# WordPress URLs
+WP_ENV='development'
+WP_HOME='http://localhost:8080'
+WP_SITEURL="${WP_HOME}/wp"
+
+# Security Keys (Generate di: https://roots.io/salts.html)
+AUTH_KEY='your-unique-auth-key'
+SECURE_AUTH_KEY='your-unique-secure-auth-key'
+LOGGED_IN_KEY='your-unique-logged-in-key'
+NONCE_KEY='your-unique-nonce-key'
+AUTH_SALT='your-unique-auth-salt'
+SECURE_AUTH_SALT='your-unique-secure-auth-salt'
+LOGGED_IN_SALT='your-unique-logged-in-salt'
+NONCE_SALT='your-unique-nonce-salt'
+```
+
+### 4. Start Development Server
+
+```bash
+# Dari direktori theme
+cd web/app/themes/talenavi-event/
+php -S localhost:8080
+
+# Atau dari direktori web
+cd web/
+php -S localhost:8080
+```
+
+---
+
+## 📦 Dependencies
+
+### Production Dependencies
+
+| Package | Version | Description |
+|---------|---------|-------------|
+| `roots/wordpress` | 6.8.2 | WordPress core |
+| `roots/wp-config` | 1.0.0 | WordPress configuration |
+| `roots/bedrock-autoloader` | ^1.0 | Autoloader for mu-plugins |
+| `vlucas/phpdotenv` | ^5.5 | Environment variable loader |
+| `wpackagist-plugin/pods` | ^3.3 | Custom fields plugin |
+| `wpackagist-theme/twentytwentyfive` | ^1.0 | Default WordPress theme |
+
+### Development Dependencies
+
+| Package | Version | Description |
+|---------|---------|-------------|
+| `laravel/pint` | ^1.18 | Code formatting tool |
+| `wp-cli/wp-cli-bundle` | ^2 | WordPress CLI tools |
+| `roave/security-advisories` | dev-latest | Security vulnerability checker |
+
+---
+
+## 🛠 Development Commands
+
+### Composer Commands
+
+```bash
+# Install dependencies
+composer install
+
+# Update dependencies
+composer update
+
+# Install production dependencies only
+composer install --no-dev --optimize-autoloader
+
+# Check for security vulnerabilities
+composer audit
+```
+
+### Code Quality
+
+```bash
+# Check code formatting
+composer lint
+
+# Fix code formatting
+composer lint:fix
+
+# Manual Pint commands
+./vendor/bin/pint --test    # Check formatting
+./vendor/bin/pint           # Fix formatting
+```
+
+### WP-CLI Commands
+
+```bash
+# Check WordPress status
+wp core version
+
+# Update WordPress
+wp core update
+
+# Install plugins
+wp plugin install plugin-name --activate
+
+# Database operations
+wp db export backup.sql
+wp db import backup.sql
+
+# Cache operations
+wp cache flush
+```
+
+---
+
+## 🔧 Configuration
+
+### Environment Files
+
+- **`.env`**: Main environment configuration (tidak di-commit ke Git)
+- **`.env.example`**: Template untuk environment variables
+- **`config/application.php`**: Konfigurasi aplikasi utama
+- **`config/environments/development.php`**: Konfigurasi development
+- **`config/environments/staging.php`**: Konfigurasi staging
+
+### WordPress Configuration
+
+WordPress dikonfigurasi melalui:
+- Environment variables (`.env`)
+- Application config (`config/application.php`)
+- Environment-specific config (`config/environments/`)
+
+### Custom Theme
+
+Theme custom "talenavi-event" terletak di:
+```
+web/app/themes/talenavi-event/
+├── style.css           # Theme information & styles
+├── functions.php       # Theme functionality
+├── index.php          # Main template
+├── header.php         # Header template
+├── footer.php         # Footer template
+├── single-event.php   # Event detail template
+├── upcoming-events.php # Event listing template
+└── assets/            # Theme assets
+    ├── css/           # Stylesheets
+    ├── js/            # JavaScript files
+    └── images/        # Images
+```
+
+---
+
+## 🗂 File Structure Details
+
+### `/config/`
+Berisi konfigurasi aplikasi WordPress:
+- **`application.php`**: Konfigurasi utama aplikasi
+- **`environments/`**: Konfigurasi spesifik environment
+
+### `/web/`
+Document root untuk web server:
+- **`app/`**: Direktori aplikasi WordPress
+- **`wp/`**: WordPress core files (dikelola Composer)
+- **`index.php`**: Entry point WordPress
+- **`wp-config.php`**: WordPress configuration loader
+
+### `/web/app/`
+Direktori aplikasi WordPress:
+- **`mu-plugins/`**: Must-use plugins (auto-loaded)
+- **`plugins/`**: Regular WordPress plugins
+- **`themes/`**: WordPress themes
+- **`uploads/`**: Media uploads
+
+---
+
+## 🔐 Security
+
+### Environment Variables
+- Semua konfigurasi sensitif disimpan di `.env`
+- File `.env` tidak di-commit ke version control
+- Gunakan `.env.example` sebagai template
+
+### WordPress Security
+- WordPress core dikelola melalui Composer
+- Security updates otomatis melalui `roave/security-advisories`
+- Konfigurasi keamanan di `config/application.php`
+
+### File Permissions
+```bash
+# Set proper permissions
+find . -type f -exec chmod 644 {} \;
+find . -type d -exec chmod 755 {} \;
+chmod 600 .env
+```
+
+---
+
+## 🚀 Deployment
+
+### Production Setup
+
+1. **Upload files** ke server
+2. **Install dependencies**:
+   ```bash
+   composer install --no-dev --optimize-autoloader
+   ```
+3. **Configure environment**:
+   ```bash
+   cp .env.example .env
+   # Edit .env dengan konfigurasi production
+   ```
+4. **Set file permissions**
+5. **Configure web server** untuk point ke `/web/` directory
+
+### Environment Variables untuk Production
+
+```env
+WP_ENV='production'
+WP_HOME='https://yourdomain.com'
+WP_SITEURL="${WP_HOME}/wp"
+WP_DEBUG=false
+WP_DEBUG_LOG=false
+WP_DEBUG_DISPLAY=false
+```
+
+---
+
+## 🧪 Testing
+
+### Local Development
+
+```bash
+# Start development server
+cd web/app/themes/talenavi-event/
+php -S localhost:8080
+
+# Access WordPress
+# Frontend: http://localhost:8080
+# Admin: http://localhost:8080/wp/wp-admin/
+```
+
+### Code Quality Testing
+
+```bash
+# Check code formatting
+composer lint
+
+# Fix code formatting issues
+composer lint:fix
+```
+
+---
+
+## 📚 Documentation
+
+### Bedrock Documentation
+- [Official Bedrock Docs](https://roots.io/bedrock/docs/)
+- [Twelve-Factor WordPress](https://roots.io/twelve-factor-wordpress/)
+
+### WordPress Development
+- [WordPress Developer Handbook](https://developer.wordpress.org/)
+- [WordPress Coding Standards](https://developer.wordpress.org/coding-standards/)
+
+### Theme Development
+- [Theme Development Handbook](https://developer.wordpress.org/themes/)
+- [Template Hierarchy](https://developer.wordpress.org/themes/basics/template-hierarchy/)
+
+---
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+**1. Composer Install Errors**
+```bash
+# Clear composer cache
+composer clear-cache
+composer install
+```
+
+**2. Permission Errors**
+```bash
+# Fix file permissions
+chmod -R 755 web/app/uploads/
+chmod 600 .env
+```
+
+**3. Database Connection Errors**
+- Check `.env` database configuration
+- Verify database server is running
+- Test database connection manually
+
+**4. WordPress Not Loading**
+- Check web server configuration
+- Verify document root points to `/web/`
+- Check `.htaccess` file if using Apache
+
+---
+
+## 📞 Support
+
+**Project**: Talenavi Event WordPress Application  
+**Framework**: Roots Bedrock  
+**WordPress Version**: 6.8.2  
+**PHP Version**: 8.1+
+
+Untuk bantuan lebih lanjut:
+- [Bedrock Documentation](https://roots.io/bedrock/docs/)
+- [Roots Community](https://discourse.roots.io/)
+- [WordPress Support](https://wordpress.org/support/)
+
+---
+
+</div>

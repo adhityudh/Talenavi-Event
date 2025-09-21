@@ -6,7 +6,7 @@
                 <p class="footer-description">
                     Connecting people through amazing events and unforgettable experiences.
                 </p>
-                <p class="footer-copyright">&copy; 2024 EventHub. All rights reserved.</p>
+                <p class="footer-copyright">&copy; <?php echo date('Y'); ?> Adhitya Yudha P | Built with ❤️ for PT. Dynamic Talenta Navigator</p>
             </div>
         </div>
     </footer>
