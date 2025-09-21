@@ -1197,14 +1197,14 @@
             <div class="nav-content">
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="EVENT Logo" style="height: 48px; width: auto; object-fit: contain;">
                 <div class="nav-links">
-                    <a href="#" class="nav-link active">
+                    <a href="<?php echo home_url(); ?>" class="nav-link <?php echo (is_front_page()) ? 'active' : ''; ?>">
                         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                             <polyline points="9,22 9,12 15,12 15,22"></polyline>
                         </svg>
                         Browse Events
                     </a>
-                    <a href="#" class="nav-link">
+                    <a href="<?php echo home_url('/upcoming-events'); ?>" class="nav-link <?php echo (is_page('upcoming-events')) ? 'active' : ''; ?>">
                         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
                             <line x1="16" y1="2" x2="16" y2="6"></line>
@@ -1238,14 +1238,14 @@
                 </div>
                 
                 <div class="mobile-nav-links">
-                    <a href="#" class="mobile-nav-link active" onclick="closeMobileMenu()">
+                    <a href="<?php echo home_url(); ?>" class="mobile-nav-link <?php echo (is_front_page()) ? 'active' : ''; ?>" onclick="closeMobileMenu()">
                         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                             <polyline points="9,22 9,12 15,12 15,22"></polyline>
                         </svg>
                         Browse Events
                     </a>
-                    <a href="#" class="mobile-nav-link" onclick="closeMobileMenu()">
+                    <a href="<?php echo home_url('/upcoming-events'); ?>" class="mobile-nav-link <?php echo (is_page('upcoming-events')) ? 'active' : ''; ?>" onclick="closeMobileMenu()">
                         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
                             <line x1="16" y1="2" x2="16" y2="6"></line>
